@@ -1,3 +1,14 @@
+---
+layout:     post
+title:      关于 synchronizeOnSession
+subtitle:   
+author:     WeYux
+header-img: img/post-bg-kuaidi.jpg
+catalog: true
+tags:
+    - Spring
+---
+
 # 关于 synchronizeOnSession
 
 最近在维护一个老项目，发现了一个问题。我们新增了一个耗时较久的复杂查询的功能，页面采用了ajax异步请求数据，但是请求未返回之前，点击页面其他功能都只能打开空白页，必须等待之前的数据返回后才能开始加载，整个过程是串行等待，调试过程中发现服务器仅分配了一个线程给该用户。故查看了一下原始代码，发现web.xml中配置了如下参数：
